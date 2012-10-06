@@ -28,12 +28,13 @@
 
 -export(['create-app'/2,
          'create-node'/2,
+         'create-nif'/2,
          'list-templates'/2,
          create/2]).
 
 %% API for other utilities that need templating functionality
 -export([resolve_variables/2,
-         render/2]).
+        render/2]).
 
 -include("rebar.hrl").
 
@@ -50,6 +51,10 @@
 'create-node'(Config, _File) ->
     %% Alias for create w/ template=simplenode
     create1(Config, "simplenode").
+
+'create-nif'(Config, _File) ->
+    %% Alias for create w/ template=basicnif
+    create1(Config, "basicnif").
 
 'list-templates'(Config, _File) ->
     {AvailTemplates, Files} = find_templates(Config),

@@ -279,6 +279,7 @@ compile                              Compile sources
 create      template= [var=foo,...]  Create skel based on template and vars
 create-app  [appid=myapp]            Create simple app skel
 create-node [nodeid=mynode]          Create simple node skel
+create-nif  [modid=mymod]            Create simple NIF skel
 list-templates                       List available templates
 
 doc                                  Generate Erlang program documentation
@@ -372,6 +373,7 @@ filter_flags(Config, [Item | Rest], Commands) ->
 
 command_names() ->
     ["check-deps", "clean", "compile", "create", "create-app", "create-node",
+     "create-nif",
      "ct", "delete-deps", "doc", "eunit", "generate", "generate-appups",
      "generate-upgrade", "get-deps", "help", "list-deps", "list-templates",
      "qc", "update-deps", "overlay", "shell", "version", "xref"].
