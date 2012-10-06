@@ -1,3 +1,8 @@
-{variables, [{module, "mymodule"}]}.
-{template, "basicnif.erl", "src/{{module}}.erl"}.
-{template, "basicnif.c", "c_src/{{module}}.c"}.
+{variables, [{modid, "mymodule"}]}.
+{template, "basicnif_Makefile", "Makefile"}.
+{template, "basicnif_rebar.config", "rebar.config"}.
+{template, "basicnif.app.src", "src/{{modid}}.app.src"}.
+{template, "basicnif.erl", "src/{{modid}}.erl"}.
+{template, "basicnif_nif.c", "c_src/{{modid}}_nif.c"}.
+{template, "basicnif_tests.erl", "test/{{modid}}_tests.erl"}.
+{template, "basicnif_overview.edoc", "doc/overview.edoc"}.

@@ -1,17 +1,13 @@
--module({{module}}).
+-module({{modid}}).
 
--export([new/0,
-         myfunction/1]).
+-export([new/1, get/1]).
 
 -on_load(init/0).
 
 -define(nif_stub, nif_stub_error(?LINE)).
-nif_stub_error(Line) ->
-    erlang:nif_error({nif_not_loaded,module,?MODULE,line,Line}).
 
--ifdef(TEST).
--include_lib("eunit/include/eunit.hrl").
--endif.
+nif_stub_error(Line) ->
+    erlang:nif_error({nif_not_loaded, module, ?MODULE, line, Line}).
 
 init() ->
     PrivDir = case code:priv_dir(?MODULE) of
@@ -22,21 +18,11 @@ init() ->
                   Path ->
                       Path
               end,
-    erlang:load_nif(filename:join(PrivDir, ?MODULE), 0).
+    erlang:load_nif(filename:join(PrivDir, {{modid}}_nif), 0).
 
-new() ->
+new(_Binary) ->
     ?nif_stub.
 
-myfunction(_Ref) ->
+get(_Context) ->
     ?nif_stub.
 
-%% ===================================================================
-%% EUnit tests
-%% ===================================================================
--ifdef(TEST).
-
-basic_test() ->
-    {ok, Ref} = new(),
-    ?assertEqual(ok, myfunction(Ref)).
-
--endif.

@@ -1,8 +1,0 @@
-{variables, [{modid, "mymodule"}]}.
-{template, "simplenif_Makefile", "Makefile"}.
-{template, "simplenif_rebar.config", "rebar.config"}.
-{template, "simplenif.app.src", "src/{{modid}}.app.src"}.
-{template, "simplenif.erl", "src/{{modid}}.erl"}.
-{template, "simplenif_nif.c", "c_src/{{modid}}_nif.c"}.
-{template, "simplenif_tests.erl", "test/{{modid}}_tests.erl"}.
-{template, "simplenif_overview.edoc", "doc/overview.edoc"}.
