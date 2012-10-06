@@ -1,0 +1,19 @@
+.PHONY: doc
+
+all:
+	./rebar compile
+	./rebar doc
+	./rebar eunit
+
+compile:
+	./rebar compile
+
+doc:
+	./rebar doc
+
+clean:
+	./rebar clean
+
+test: xref
+	./rebar eunit
+
