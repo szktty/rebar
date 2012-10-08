@@ -1,0 +1,15 @@
+language: erlang
+
+notifications:
+  disabled: true
+
+branches:
+  only:
+    - master
+    - develop
+
+otp_release:
+  - R15B02
+  - R15B01
+  - R15B
+
