@@ -1,4 +1,5 @@
-{variables, [{modid, "mymodule"}]}.
+{variables, [{modid, "mymodule"}, {github, "username"}]}.
+{template, "basicnif_README.md", "README.md"}.
 {template, "basicnif_Makefile", "Makefile"}.
 {template, "basicnif_rebar.config", "rebar.config"}.
 {template, "basicnif.gitignore", ".gitignore"}.
