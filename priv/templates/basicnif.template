@@ -1,6 +1,7 @@
 {variables, [{modid, "mymodule"}]}.
 {template, "basicnif_Makefile", "Makefile"}.
 {template, "basicnif_rebar.config", "rebar.config"}.
+{template, "basicnif.gitignore", ".gitignore"}.
 {template, "basicnif.travis.yml", ".travis.yml"}.
 {template, "basicnif.app.src", "src/{{modid}}.app.src"}.
 {template, "basicnif.erl", "src/{{modid}}.erl"}.
