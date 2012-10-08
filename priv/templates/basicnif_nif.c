@@ -9,11 +9,13 @@ struct {{modid}}_nif_rsrc {
 };
 
 static int init(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info);
-static int on_load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info);
-static int on_upgrade(ErlNifEnv *env, void **priv_data, void **old_priv_data,
+static int load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info);
+static int upgrade(ErlNifEnv *env, void **priv_data, void **old_priv_data,
         ERL_NIF_TERM load_info);
-static void on_unload(ErlNifEnv *env, void *priv_data);
+static void unload(ErlNifEnv *env, void *priv_data);
+
 static void {{modid}}_nif_cleanup_rsrc(ErlNifEnv *env, void *arg);
+
 static ERL_NIF_TERM {{modid}}_nif_new(ErlNifEnv *env, int argc,
         const ERL_NIF_TERM argv[]);
 static ERL_NIF_TERM {{modid}}_nif_get(ErlNifEnv *env, int argc,
@@ -25,7 +27,7 @@ static ErlNifFunc nif_funcs[] =
     {"get", 1, {{modid}}_nif_get},
 };
 
-ERL_NIF_INIT({{modid}}, nif_funcs, &on_load, NULL, &on_upgrade, &on_unload);
+ERL_NIF_INIT({{modid}}, nif_funcs, &load, NULL, &upgrade, &unload);
 
 static ERL_NIF_TERM atom_ok;
 static ERL_NIF_TERM atom_error;
@@ -49,20 +51,20 @@ init(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
 }
 
 static int
-on_load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
+load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
 {
     return init(env, priv_data, load_info);
 }
 
 static int
-on_upgrade(ErlNifEnv *env, void **priv_data, void **old_priv_data,
+upgrade(ErlNifEnv *env, void **priv_data, void **old_priv_data,
         ERL_NIF_TERM load_info)
 {
     return init(env, priv_data, load_info);
 }
 
 static void
-on_unload(ErlNifEnv *env, void *priv_data)
+unload(ErlNifEnv *env, void *priv_data)
 {
 }
 
