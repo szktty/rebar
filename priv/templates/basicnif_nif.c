@@ -27,11 +27,17 @@ static ErlNifFunc nif_funcs[] =
 
 ERL_NIF_INIT({{modid}}, nif_funcs, &on_load, NULL, &on_upgrade, &on_unload);
 
+static ERL_NIF_TERM atom_ok;
+static ERL_NIF_TERM atom_error;
+
 static ErlNifResourceType *{{modid}}_nif_rsrc_type;
 
 static int
 init(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
 {
+    atom_ok = enif_make_atom(env, "ok");
+    atom_error = enif_make_atom(env, "error");
+
     {{modid}}_nif_rsrc_type = enif_open_resource_type(env, NULL,
             "{{modid}}_nif_rsrc",
             &{{modid}}_nif_cleanup_rsrc,
