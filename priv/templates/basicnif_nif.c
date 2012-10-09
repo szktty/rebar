@@ -8,7 +8,6 @@ struct {{modid}}_nif_rsrc {
     size_t len;    
 };
 
-static int init(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info);
 static int load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info);
 static int upgrade(ErlNifEnv *env, void **priv_data, void **old_priv_data,
         ERL_NIF_TERM load_info);
@@ -35,7 +34,7 @@ static ERL_NIF_TERM atom_error;
 static ErlNifResourceType *{{modid}}_nif_rsrc_type;
 
 static int
-init(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
+load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
 {
     atom_ok = enif_make_atom(env, "ok");
     atom_error = enif_make_atom(env, "error");
@@ -51,16 +50,10 @@ init(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
 }
 
 static int
-load(ErlNifEnv *env, void **priv_data, ERL_NIF_TERM load_info)
-{
-    return init(env, priv_data, load_info);
-}
-
-static int
 upgrade(ErlNifEnv *env, void **priv_data, void **old_priv_data,
         ERL_NIF_TERM load_info)
 {
-    return init(env, priv_data, load_info);
+    return 0;
 }
 
 static void
